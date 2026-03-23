@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSES Connect® - Premium Electrical Services | Government Verified</title>
+    <meta name="description" content="HSES Connect® - MSME Registered & Government Verified Electrical Services. Emergency repairs, wiring, smart home automation, commercial installations across Delhi NCR and Pan-India.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1C2B4A;
+            --accent: #FFB800;
+            --light: #F5F7FA;
+            --white: #FFFFFF;
+            --dark: #0F1419;
+            --border: #E0E4E8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav.active {
+            display: flex;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            flex-direction: column;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            display: block;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                position: static;
+                background: none;
+                flex-direction: row;
+                padding: 0;
+                gap: 2rem;
+                box-shadow: none;
+            }
+
+            nav a {
+                border-bottom: none;
+                padding: 0;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #253952 100%);
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .accent-text {
+            color: var(--accent);
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .search-box input::placeholder {
+            color: #999;
+        }
+
+        /* Certifications */
+        .certifications {
+            background: var(--light);
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            text-align: center;
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-badge p {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(31, 43, 74, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Info Sections */
+        .info-section {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .info-section h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .info-section li:before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-method {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,184,0,0.3);
+        }
+
+        .contact-method .icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #0A1015;
+            color: #AAA;
+            padding: 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #AAA;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            color: #777;
+        }
+
+        /* Pages Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth transitions */
+        .page {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Rating Display */
+        .rating-box {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .rating {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .rating-source {
+            color: #666;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Page Indicators */
+        .page-nav {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-nav button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .page-nav button:hover,
+        .page-nav button.active {
+            background: var(--accent);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>⚡</span>
+                HSES Connect<span>®</span>
+            </div>
+            <nav id="navMenu">
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#" onclick="showPage('services')">Services & Pricing</a>
+                <a href="#" onclick="showPage('offers')">Offers & Visiting Card</a>
+                <a href="#" onclick="showPage('enquiry')">Enquiry Hub</a>
+                <a href="#" onclick="showPage('about')">About Us</a>
+                <a href="#" onclick="showPage('reviews')">Reviews</a>
+                <a href="#" onclick="showPage('contact')">Contact Us</a>
+                <a href="#" onclick="showPage('blog')">Blog</a>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Premium Electrical Solutions for Your <span class="accent-text">Home & Business</span></h1>
+            <p>MSME Registered & Government Verified | Serving Delhi NCR & Pan-India Since 2012</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search by service name, code, or page...">
+            </div>
+        </div>
+
+        <div class="certifications">
+            <div class="cert-badge">
+                <div class="cert-icon">✓</div>
+                <p>MSME Registered & Govt. Verified</p>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">⭐</div>
+                <p>Premium Electrical Services</p>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">🕒</div>
+                <p>2-Hour Response Time</p>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">⭐</div>
+                <p>4.9/5 Rating</p>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">📅</div>
+                <p>1 Year Warranty</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Our Core Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Emergency Repairs</h3>
+                        <p>24/7 emergency electrical repairs with quick response time</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3>Wiring & Installation</h3>
+                        <p>Professional electrical wiring for residential and commercial</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏠</div>
+                        <h3>Smart Home Solutions</h3>
+                        <p>Advanced smart home automation and IoT integration</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Load Management</h3>
+                        <p>Electrical load optimization and safety systems</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Earthing & Safety</h3>
+                        <p>Professional earthing solutions and safety compliance</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Commercial Solutions</h3>
+                        <p>Complete commercial electrical installations and maintenance</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Why Choose HSES Connect®?</h2>
+                <div class="info-section">
+                    <h3>✨ Our Advantages</h3>
+                    <ul>
+                        <li>Government Verified & MSME Registered business since 2012</li>
+                        <li>2-Hour emergency response time guarantee</li>
+                        <li>Certified and experienced electricians</li>
+                        <li>1-Year warranty on all services</li>
+                        <li>Transparent pricing with no hidden charges</li>
+                        <li>Available 24/7 for emergency services</li>
+                        <li>4.9/5 star rating from verified customers</li>
+                        <li>Pan-India service coverage</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- SERVICES & PRICING PAGE -->
+    <div id="services" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Services & <span class="accent-text">Pricing</span></h1>
+            <p>Transparent, competitive pricing for all your electrical needs</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Our Complete Service Catalog</h2>
+                <div class="info-section">
+                    <h3>Residential Services</h3>
+                    <ul>
+                        <li>Emergency electrical repairs and troubleshooting</li>
+                        <li>New wiring and rewiring projects</li>
+                        <li>MCB installation and upgrades</li>
+                        <li>Smart home automation systems</li>
+                        <li>Earthing and grounding solutions</li>
+                        <li>LED lighting solutions</li>
+                        <li>AC and appliance installations</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h3>Commercial Services</h3>
+                    <ul>
+                        <li>Commercial electrical installations</li>
+                        <li>Office electrical setup and maintenance</li>
+                        <li>Industrial electrical systems</li>
+                        <li>Load management and optimization</li>
+                        <li>Safety compliance and audits</li>
+                        <li>Generator and backup power solutions</li>
+                        <li>Energy-efficient solutions</li>
+                    </ul>
+                </div>
+
+                <div class="rating-box">
+                    <p style="color: var(--primary); margin-bottom: 0.5rem;">Customer Satisfaction</p>
+                    <div class="rating">4.9 / 5</div>
+                    <div class="rating-source">Based on verified customer reviews</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- OFFERS & VISITING CARD PAGE -->
+    <div id="offers" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Special <span class="accent-text">Offers</span></h1>
+            <p>Exclusive deals and promotions for our valued customers</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Current Offers</h2>
+                <div class="info-section">
+                    <h3>🎁 Visiting Card Benefits</h3>
+                    <ul>
+                        <li>Get 10% discount on first service booking</li>
+                        <li>Priority customer support line</li>
+                        <li>Emergency service within 2 hours</li>
+                        <li>Annual maintenance packages at special rates</li>
+                        <li>Referral bonus for new customers</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h3>💳 Special Packages</h3>
+                    <ul>
+                        <li>Complete home wiring packages</li>
+                        <li>Smart home automation bundles</li>
+                        <li>Annual maintenance contracts</li>
+                        <li>AMC Plans for offices and commercial spaces</li>
+                        <li>Bulk purchase discounts on materials</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <p style="color: var(--primary); font-weight: 500; margin-bottom: 1rem;">Contact us for latest offers and visiting card details</p>
+                    <a href="#" onclick="showPage('contact')" style="background: var(--accent); color: var(--primary); padding: 0.75rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block;">Contact Now</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ENQUIRY HUB PAGE -->
+    <div id="enquiry" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Enquiry <span class="accent-text">Hub</span></h1>
+            <p>Get in touch with our team for any electrical queries</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>How We Work</h2>
+                <div class="info-section">
+                    <h3>📞 Quick Enquiry Process</h3>
+                    <ul>
+                        <li>Call us at +91 7827817295 for immediate assistance</li>
+                        <li>WhatsApp us for quick response and photo sharing</li>
+                        <li>Email detailed requirements to hses247help@gmail.com</li>
+                        <li>Visit our website for service information</li>
+                        <li>We respond within 2 hours for emergency services</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h3>❓ Frequently Asked Questions</h3>
+                    <ul>
+                        <li>What areas do you service? Pan-India coverage with Delhi NCR specialization</li>
+                        <li>Are you available 24/7? Yes, emergency services are available round the clock</li>
+                        <li>Do you provide warranty? Yes, 1-year warranty on all services</li>
+                        <li>What are your payment options? Cash, online transfer, cheque</li>
+                        <li>How quickly can you respond? 2-hour response time guarantee</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ABOUT US PAGE -->
+    <div id="about" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>About <span class="accent-text">HSES Connect®</span></h1>
+            <p>Trusted Electrical Solutions Since 2012</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Our Story</h2>
+                <div class="info-section">
+                    <h3>🎯 About Our Company</h3>
+                    <p style="margin-bottom: 1rem;">HSES Connect® (Hasan Smart Electrical Solutions®) is an MSME-registered and government-verified electrical services company that has been serving customers across Delhi NCR and Pan-India since 2012. We specialize in comprehensive electrical solutions ranging from emergency repairs to smart home automation.</p>
+                    <ul>
+                        <li>13+ years of industry experience</li>
+                        <li>MSME Registered & Government Verified</li>
+                        <li>Professional team of certified electricians</li>
+                        <li>Commitment to quality and safety</li>
+                        <li>Customer satisfaction rating of 4.9/5</li>
+                        <li>24/7 emergency service availability</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h3>💡 Our Mission</h3>
+                    <p>To provide safe, reliable, and innovative electrical solutions that enhance the quality of life for our customers while maintaining the highest standards of professionalism and integrity.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>👥 Our Team</h3>
+                    <p>Our experienced team of certified electricians and technical experts is dedicated to delivering exceptional service with attention to detail and customer satisfaction.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- REVIEWS PAGE -->
+    <div id="reviews" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Customer <span class="accent-text">Reviews</span></h1>
+            <p>See what our satisfied customers have to say</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>What Our Customers Say</h2>
+                
+                <div class="rating-box">
+                    <p style="color: var(--primary); margin-bottom: 0.5rem;">Overall Rating</p>
+                    <div class="rating">4.9 / 5</div>
+                    <div class="rating-source">Government Verified Ratings</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="info-section">
+                        <h3>⭐⭐⭐⭐⭐ Excellent Service</h3>
+                        <p style="margin-bottom: 1rem;">"HSES Connect provided outstanding electrical repair service. The technician was professional, knowledgeable, and completed the work efficiently."</p>
+                        <p style="color: #999; font-size: 0.9rem;">- Verified Customer</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>⭐⭐⭐⭐⭐ Highly Recommended</h3>
+                        <p style="margin-bottom: 1rem;">"Quick response time, transparent pricing, and excellent workmanship. They completed our smart home setup perfectly."</p>
+                        <p style="color: #999; font-size: 0.9rem;">- Verified Customer</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>⭐⭐⭐⭐⭐ Professional & Reliable</h3>
+                        <p style="margin-bottom: 1rem;">"Been using their services for emergency repairs. Always responsive, professional, and trustworthy. Definitely recommend!"</p>
+                        <p style="color: #999; font-size: 0.9rem;">- Verified Customer</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- CONTACT US PAGE -->
+    <div id="contact" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Contact <span class="accent-text">Us</span></h1>
+            <p>Get in touch with HSES Connect® - Available 24/7</p>
+        </div>
+
+        <div class="contact-section container" style="background: transparent; padding: 3rem 1rem;">
+            <h2 style="color: var(--primary);">Get In Touch</h2>
+            
+            <div class="contact-methods" style="color: var(--primary);">
+                <div class="contact-method" style="background: var(--light); border: 2px solid var(--accent);">
+                    <div class="icon" style="color: var(--accent);">📞</div>
+                    <h3 style="color: var(--primary);">Phone</h3>
+                    <a href="tel:+917827817295" style="color: var(--accent);">+91 7827817295</a>
+                    <p style="color: #666; margin-top: 0.5rem;">Available 24/7</p>
+                </div>
+
+                <div class="contact-method" style="background: var(--light); border: 2px solid var(--accent);">
+                    <div class="icon" style="color: var(--accent);">💬</div>
+                    <h3 style="color: var(--primary);">WhatsApp</h3>
+                    <a href="https://wa.me/917827817295" style="color: var(--accent);">+91 7827817295</a>
+                    <p style="color: #666; margin-top: 0.5rem;">Quick Response</p>
+                </div>
+
+                <div class="contact-method" style="background: var(--light); border: 2px solid var(--accent);">
+                    <div class="icon" style="color: var(--accent);">📧</div>
+                    <h3 style="color: var(--primary);">Email</h3>
+                    <a href="mailto:hses247help@gmail.com" style="color: var(--accent);">hses247help@gmail.com</a>
+                    <p style="color: #666; margin-top: 0.5rem;">Detailed Enquiries</p>
+                </div>
+
+                <div class="contact-method" style="background: var(--light); border: 2px solid var(--accent);">
+                    <div class="icon" style="color: var(--accent);">🌐</div>
+                    <h3 style="color: var(--primary);">Website</h3>
+                    <a href="https://hses247help.com" style="color: var(--accent);">hses247help.com</a>
+                    <p style="color: #666; margin-top: 0.5rem;">Service Information</p>
+                </div>
+            </div>
+
+            <div style="background: var(--light); padding: 2rem; border-radius: 12px; margin-top: 2rem; text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Service Area</h3>
+                <p style="color: #666;">Pan-India coverage with specialized service in Delhi NCR region</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="blog" class="page">
+        <div class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, #253952 100%); padding: 2rem 1rem;">
+            <h1>Blog & <span class="accent-text">Resources</span></h1>
+            <p>Educational content about electrical safety and solutions</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Featured Articles</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="info-section">
+                        <h3>⚡ Earthing Importance</h3>
+                        <p>Learn why proper earthing is crucial for electrical safety in your home and office. Understand the benefits and implementation of earthing systems.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>🔌 Services Guide</h3>
+                        <p>A comprehensive guide to all the electrical services we offer. From emergency repairs to smart home solutions, find what you need.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>🔧 Wiring Check Importance</h3>
+                        <p>Discover why regular electrical wiring checks are essential for safety. Learn about common wiring issues and prevention methods.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>📋 AMC Plans</h3>
+                        <p>Understand the benefits of Annual Maintenance Contracts. Keep your electrical systems running smoothly with regular maintenance.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>🎨 Brand Kit</h3>
+                        <p>Learn about HSES Connect® brand values, identity, and commitment to quality service and customer satisfaction.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>🛡️ Customer Protection</h3>
+                        <p>Understand our customer protection policies and warranties. Your satisfaction and safety are our top priorities.</p>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 500;">Read More →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About HSES</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('reviews')">Reviews</a></li>
+                    <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                    <li><a href="#">Why Choose Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('services')">Services & Pricing</a></li>
+                    <li><a href="#">Emergency Services</a></li>
+                    <li><a href="#">Paid Consultation</a></li>
+                    <li><a href="#">Customer Protection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Service Locations</a></li>
+                    <li><a href="#">Get Client ID</a></li>
+                    <li><a href="#">Become a Partner</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Payment Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+917827817295">📞 +91 7827817295</a></li>
+                    <li><a href="mailto:hses247help@gmail.com">📧 hses247help@gmail.com</a></li>
+                    <li><a href="https://wa.me/917827817295">💬 WhatsApp Us</a></li>
+                    <li><a href="https://hses247help.com">🌐 Website</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 HSES Connect® - All Rights Reserved. MSME Registered & Government Verified.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Hasan Smart Electrical Solutions | Serving Pan-India Since 2012</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // Close menu on mobile
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
